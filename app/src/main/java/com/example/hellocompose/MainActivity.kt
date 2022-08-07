@@ -22,37 +22,47 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            HelloCompose()
+            HelloComposeTheme() {
+                HelloCompose()
+            }
+
         }
     }
 }
 @Composable
 fun HelloCompose(){
-    Card(
-        elevation = 4.dp,
-        shape = MaterialTheme.shapes.small
-    ) {
-        Column(
-            modifier = Modifier.padding(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(painterResource(id = R.drawable.icono )
-                , contentDescription = null,
-                modifier = Modifier.size(40.dp, 40.dp))
-            Text("Este curso es lo mejor", style = MaterialTheme.typography.h4 )
-            Text(text = "Curso de Jetpack Compose :)")
-            Button(onClick = {
 
-            }, modifier = Modifier.padding(top = 16.dp)) {
-                Text("Click me")
+        Card(
+            elevation = 4.dp,
+            shape = MaterialTheme.shapes.large
+        ) {
+            Column(
+                modifier = Modifier.padding(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(painterResource(id = R.drawable.icono )
+                    , contentDescription = null,
+                    modifier = Modifier.size(40.dp, 40.dp))
+                Text("Este curso es lo mejor",
+                    style = MaterialTheme.typography.h4 )
+                Text(text = "Curso de Jetpack Compose :)",
+                    style = MaterialTheme.typography.body1)
+                Button(onClick = {
+
+                }, modifier = Modifier.padding(top = 16.dp),
+                shape = MaterialTheme.shapes.large) {
+                    Text("Click me")
+                }
             }
         }
-    }
 }
 @Preview(
     showBackground = true
 )
 @Composable
 fun HelloComposePreview(){
-     HelloCompose()
+    HelloComposeTheme() {
+        HelloCompose()
+    }
+
 }
